@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655845592841",
+    "project_id": "technocity-74d04",
+    "storage_bucket": "technocity-74d04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655845592841:android:1f6cb14b18f00f40284dd8",
+        "android_client_info": {
+          "package_name": "uz.techno.city"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655845592841-ir9npjrrakafj3ipr52662kksd55dpnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPTdf_UBW5gjW4Rm3xCv7EE86zF9M_cbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655845592841-ir9npjrrakafj3ipr52662kksd55dpnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

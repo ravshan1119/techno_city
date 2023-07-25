@@ -16,6 +16,9 @@ dependencies:
   cloud_firestore: ^4.8.3
   firebase_auth: ^4.7.1
   firebase_storage: ^11.2.5
+  flutter_screenutil: ^5.8.4
+  flutter_svg: ^2.0.7
+  zoom_tap_animation: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -24,3 +27,30 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg/
+    - assets/fonts/
+
+  fonts:
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-BlackItalic.ttf
+        - asset: assets/fonts/DMSans-Black.ttf
+        - asset: assets/fonts/DMSans-Bold.ttf
+        - asset: assets/fonts/DMSans-BoldItalic.ttf
+        - asset: assets/fonts/DMSans-ExtraBold.ttf
+        - asset: assets/fonts/DMSans-ExtraBoldItalic.ttf
+        - asset: assets/fonts/DMSans-ExtraLight.ttf
+        - asset: assets/fonts/DMSans-ExtraLightItalic.ttf
+        - asset: assets/fonts/DMSans-Italic.ttf
+        - asset: assets/fonts/DMSans-Light.ttf
+        - asset: assets/fonts/DMSans-LightItalic.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+        - asset: assets/fonts/DMSans-MediumItalic.ttf
+        - asset: assets/fonts/DMSans-SemiBold.ttf
+        - asset: assets/fonts/DMSans-SemiBold.ttf
+        - asset: assets/fonts/DMSans-Thin.ttf
+        - asset: assets/fonts/DMSans-ThinItalic.ttf

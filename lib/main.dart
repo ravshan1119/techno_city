@@ -1,9 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:techno_city/ui/auth/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:techno_city/app/app.dart';
+import 'package:techno_city/providers/auth_provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+          lazy: true,
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +36,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const LoginScreen(),
+      child: const App(),
     );
   }
 }

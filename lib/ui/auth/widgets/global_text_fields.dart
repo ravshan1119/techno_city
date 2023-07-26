@@ -9,8 +9,8 @@ class GlobalTextField extends StatelessWidget {
     required this.keyboardType,
     required this.textInputAction,
     required this.textAlign,
+    required this.controller,
     this.obscureText = false,
-    required this.onChanged,
   }) : super(key: key);
 
   final String hintText;
@@ -18,14 +18,11 @@ class GlobalTextField extends StatelessWidget {
   TextInputAction textInputAction;
   TextAlign textAlign;
   final bool obscureText;
-  final ValueChanged onChanged;
+  TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
-
     return TextField(
-      onChanged: onChanged,
       style: TextStyle(
           fontSize: 14.spMin,
           fontWeight: FontWeight.w600,

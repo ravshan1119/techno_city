@@ -19,6 +19,7 @@ dependencies:
   flutter_screenutil: ^5.8.4
   flutter_svg: ^2.0.7
   zoom_tap_animation: ^1.1.0
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

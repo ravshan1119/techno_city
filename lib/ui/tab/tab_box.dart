@@ -22,7 +22,7 @@ class _TabBoxState extends State<TabBox> {
           ),
           TextButton(
               onPressed: () {
-                context.read<AuthProvider>().LogOutUser(context);
+                context.read<AuthProvider>().logOut(context);
               },
               child: const Text("log out"))
         ],

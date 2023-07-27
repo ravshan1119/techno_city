@@ -79,9 +79,27 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> LogOutUser(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
+  Future<void> logOut(BuildContext context)async{
+    try {
+      isLoading = true;
+      notifyListeners();
+      // final credential =
+      await FirebaseAuth.instance.signOut();
+      isLoading = false;
+      loginButtonPressed();
+      notifyListeners();
+    } on FirebaseAuthException catch (e) {
+      manageMessage(context, e.code);
+      if (e.code == 'weak-password') {
+        debugPrint('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        debugPrint('The account already exists for that email.');
+      }
+    } catch (error) {
+      manageMessage(context, error.toString());
+    }
   }
+
 
   manageMessage(BuildContext context, String error) {
     ScaffoldMessenger.of(context)

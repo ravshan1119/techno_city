@@ -14,6 +14,7 @@ class AppTheme {
         statusBarColor: AppColors.c_13181F,
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
+
       ),
     ),
     textTheme: TextTheme(
@@ -106,8 +107,8 @@ class AppTheme {
       backgroundColor: AppColors.c_FAFAFA,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: AppColors.c_FAFAFA,
-        statusBarBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
       ),
     ),
     textTheme: TextTheme(

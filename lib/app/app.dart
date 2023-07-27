@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/auth_provider.dart';
-import 'package:techno_city/ui/auth/auth_screen.dart';
+import 'package:techno_city/ui/auth/login_screen.dart';
 import 'package:techno_city/ui/tab/tab_box.dart';
 class App extends StatelessWidget {
   const App({super.key});

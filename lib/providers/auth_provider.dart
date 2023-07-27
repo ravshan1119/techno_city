@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:techno_city/ui/tab/tab_box.dart';
 
 class AuthProvider with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -34,6 +35,10 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
       );
+      if(context.mounted){
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => TabBox()));
+      }
       isLoading = false;
       notifyListeners();
     } on FirebaseAuthException catch (e) {
@@ -50,6 +55,7 @@ class AuthProvider with ChangeNotifier {
       manageMessage(context, err.toString());
     }
   }
+
   Future<void> LogInUser(BuildContext context) async {
     String password = passwordController.text;
     String email = emailController.text;
@@ -110,7 +116,6 @@ class AuthProvider with ChangeNotifier {
   }
 }
 
-
 // _checkAuthState() {
 //   FirebaseAuth.instance.authStateChanges().listen((User? user) {
 //     if (user == null) {
@@ -120,4 +125,3 @@ class AuthProvider with ChangeNotifier {
 //     }
 //   });
 // }
-

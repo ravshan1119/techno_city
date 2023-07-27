@@ -78,7 +78,7 @@ class SignUpScreen extends StatelessWidget {
                   height: 180.h,
                 ),
                 GlobalButton(title: "Continue", onTap: () {
-                  context.read<AuthProvider>().SignUpUser(context);
+                  context.read<AuthProvider>().signUpUser(context);
                 }),
                 SizedBox(
                   height: 104.h,

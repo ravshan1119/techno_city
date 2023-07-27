@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/app/app.dart';
 import 'package:techno_city/providers/auth_provider.dart';
+import 'package:techno_city/providers/tab_box_provider.dart';
+import 'package:techno_city/utils/theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +17,7 @@ Future<void> main() async {
           create: (context) => AuthProvider(),
           lazy: true,
         ),
+        ChangeNotifierProvider(create: (context) => TabBoxProvider(),lazy: true,)
       ],
       child: MyApp(),
     ),
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.light,
           home: child,
         );
       },

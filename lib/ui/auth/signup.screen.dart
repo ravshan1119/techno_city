@@ -6,6 +6,7 @@ import 'package:techno_city/providers/auth_provider.dart';
 import 'package:techno_city/ui/auth/login_screen.dart';
 import 'package:techno_city/ui/auth/widgets/global_button.dart';
 import 'package:techno_city/ui/auth/widgets/global_text_fields.dart';
+import 'package:techno_city/utils/app_colors.dart';
 import 'package:techno_city/utils/colors/app_colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -81,7 +82,7 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(
                     height: 180.h,
                   ),
-                  GlobalButton(title: "Sign Up", onTap: () {
+                  GlobalButton(title: "Continue", onTap: () {
                     context.read<AuthProvider>().SignUpUser(context);
                   }),
                   SizedBox(
@@ -108,7 +109,7 @@ class SignUpScreen extends StatelessWidget {
                                   builder: (context) => const LoginScreen()));
                         },
                         child: Text(
-                          "Log In",
+                          "Sign Up",
                           style: TextStyle(
                             fontFamily: "DMSans",
                             fontWeight: FontWeight.w500,

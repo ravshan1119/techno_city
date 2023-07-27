@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:techno_city/ui/tab/tab_box.dart';
+
 
 class AuthProvider with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -23,7 +21,7 @@ class AuthProvider with ChangeNotifier {
 
   Stream<User?> listenAuthState() => FirebaseAuth.instance.authStateChanges();
 
-  Future<void> SignUpUser(BuildContext context) async {
+  Future<void> signUpUser(BuildContext context) async {
     String password = passwordController.text;
     String email = emailController.text;
 
@@ -35,10 +33,6 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
       );
-      if(context.mounted){
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => TabBox()));
-      }
       isLoading = false;
       notifyListeners();
     } on FirebaseAuthException catch (e) {
@@ -56,7 +50,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> LogInUser(BuildContext context) async {
+  Future<void> logInUser(BuildContext context) async {
     String password = passwordController.text;
     String email = emailController.text;
 
@@ -85,9 +79,27 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<void> LogOutUser(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
+  Future<void> logOut(BuildContext context)async{
+    try {
+      isLoading = true;
+      notifyListeners();
+      // final credential =
+      await FirebaseAuth.instance.signOut();
+      isLoading = false;
+      loginButtonPressed();
+      notifyListeners();
+    } on FirebaseAuthException catch (e) {
+      manageMessage(context, e.code);
+      if (e.code == 'weak-password') {
+        debugPrint('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        debugPrint('The account already exists for that email.');
+      }
+    } catch (error) {
+      manageMessage(context, error.toString());
+    }
   }
+
 
   manageMessage(BuildContext context, String error) {
     ScaffoldMessenger.of(context)

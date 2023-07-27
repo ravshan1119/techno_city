@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                 GlobalButton(
                     title: "Sign in",
                     onTap: () {
-                      context.read<AuthProvider>().logInUser(context);
+                      context.read<AuthProvider>().loginUser(context);
                     }),
                 SizedBox(
                   height: 104.h,

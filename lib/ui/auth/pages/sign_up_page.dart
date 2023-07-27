@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:techno_city/utils/app_images.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../providers/auth_provider.dart';
@@ -66,20 +68,42 @@ class SignUpScreen extends StatelessWidget {
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller: context.read<AuthProvider>().emailController),
-                SizedBox(height: 20.h,),
+                SizedBox(
+                  height: 20.h,
+                ),
                 GlobalTextField(
                     hintText: "password",
                     obscureText: true,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
-                    controller: context.read<AuthProvider>().passwordController),
+                    controller:
+                        context.read<AuthProvider>().passwordController),
                 SizedBox(
-                  height: 180.h,
+                  height: 100.h,
                 ),
-                GlobalButton(title: "Continue", onTap: () {
-                  context.read<AuthProvider>().signUpUser(context);
-                }),
+                TextButton(
+                    onPressed: () {
+                      context.read<AuthProvider>().signInWithGoogle(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Sign Up with google"),
+                        SizedBox(
+                          width: 15.w,
+                        ),
+                        SvgPicture.asset(AppImages.google),
+                      ],
+                    )),
+                SizedBox(
+                  height: 30.h,
+                ),
+                GlobalButton(
+                    title: "Continue",
+                    onTap: () {
+                      context.read<AuthProvider>().signUpUser(context);
+                    }),
                 SizedBox(
                   height: 104.h,
                 ),
@@ -124,6 +148,6 @@ class SignUpScreen extends StatelessWidget {
           ),
         )
       ],
-    ) ;
+    );
   }
 }

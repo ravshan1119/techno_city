@@ -81,7 +81,7 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(
                     height: 180.h,
                   ),
-                  GlobalButton(title: "Continue", onTap: () {
+                  GlobalButton(title: "Sign Up", onTap: () {
                     context.read<AuthProvider>().SignUpUser(context);
                   }),
                   SizedBox(
@@ -108,7 +108,7 @@ class SignUpScreen extends StatelessWidget {
                                   builder: (context) => const LoginScreen()));
                         },
                         child: Text(
-                          "Sign Up",
+                          "Log In",
                           style: TextStyle(
                             fontFamily: "DMSans",
                             fontWeight: FontWeight.w500,

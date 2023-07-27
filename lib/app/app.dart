@@ -18,7 +18,7 @@ class App extends StatelessWidget {
           } else if (snapshot.data == null) {
             return const LoginScreen();
           } else {
-            return const TabBox();
+            return TabBox();
           }
         },
       ),

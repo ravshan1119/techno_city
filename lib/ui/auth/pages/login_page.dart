@@ -19,13 +19,10 @@ class LoginPage extends StatelessWidget {
       children: [
         SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w,vertical: 25.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 90.h,
-                ),
                 Text(
                   """Welcome back to\nTechno City""",
                   style: TextStyle(
@@ -96,7 +93,7 @@ class LoginPage extends StatelessWidget {
                       context.read<AuthProvider>().loginUser(context);
                     }),
                 SizedBox(
-                  height: 104.h,
+                  height: 130.h,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

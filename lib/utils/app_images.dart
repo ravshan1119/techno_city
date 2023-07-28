@@ -1,5 +1,6 @@
 class AppImages{
   static String account = "assets/svg/account.svg";
+  static String profileImg = "assets/images/profile_image.svg";
   static String arrow = "assets/svg/arrow.svg";
   static String buy = "assets/svg/buy.svg";
   static String clock = "assets/svg/clock.svg";

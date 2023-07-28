@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,25 +46,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Container(
             color: AppColors.c_FAFAFA,
             child: Padding(
-              padding:  EdgeInsets.all(26.r),
+              padding: EdgeInsets.all(26.r),
               child: ListView(
                 children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 116.w),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100.r),
+                      child: CachedNetworkImage(
+                        imageUrl: user?.photoURL == ""
+                            ? "https://www.citypng.com/public/uploads/preview/png-round-blue-contact-user-profile-icon-11639786938sxvzj5ogua.png"
+                            : user?.photoURL ??
+                                "https://www.citypng.com/public/uploads/preview/png-round-blue-contact-user-profile-icon-11639786938sxvzj5ogua.png",
+                        height: 100.h,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
                   Text(
-                    "Username: ${user!.displayName==""?"Empty":user.displayName}",
+                    "Username: ${user!.displayName == "" ? "Empty" : user.displayName}",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         color: AppColors.c_13181F),
                   ),
                   Text(
-                    "Email: ${user.email==""?"Empty":user.email}",
+                    "Email: ${user.email == "" ? "Empty" : user.email}",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         color: AppColors.c_13181F),
                   ),
-
-                  SizedBox(height: 20.h,),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                   GlobalTextField(
                       hintText: "Display name",
                       keyboardType: TextInputType.text,
@@ -72,20 +89,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       controller: context
                           .read<ProfileProvider>()
                           .displayNameController),
-                  SizedBox(height: 20.h,),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                   GlobalTextField(
                       hintText: "Email",
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.next,
                       textAlign: TextAlign.start,
-                      controller: context
-                          .read<ProfileProvider>()
-                          .emailController),
-                  SizedBox(height: 20.h,),
+                      controller:
+                          context.read<ProfileProvider>().emailController),
+                  SizedBox(
+                    height: 20.h,
+                  ),
                   ZoomTapAnimation(
-                    onTap: (){
+                    onTap: () {
                       context.read<ProfileProvider>().updateEmail(context);
-                      context.read<ProfileProvider>().updateUserDisplayName(context);
+                      context
+                          .read<ProfileProvider>()
+                          .updateUserDisplayName(context);
                     },
                     child: Container(
                       width: 100.w,

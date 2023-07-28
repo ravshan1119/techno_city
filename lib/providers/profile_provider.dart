@@ -70,6 +70,7 @@ class ProfileProvider with ChangeNotifier {
     if(email.isNotEmpty){
       notify(true);
       UniversalData universalData=await profileService.updateUserEmail(email: email);
+      emailController.clear();
       notify(false);
       if(universalData.error.isEmpty){
         if(context.mounted){

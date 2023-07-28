@@ -3,11 +3,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileProvider with ChangeNotifier {
+
+
+
   ProfileProvider() {
     currentUser = FirebaseAuth.instance.currentUser;
     notifyListeners();
     listenUserChanges();
   }
+
+  TextEditingController displayNameController = TextEditingController();
 
   bool isLoading = false;
 
@@ -32,4 +37,16 @@ class ProfileProvider with ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+
+  Future<void> updateUserDisplayName(BuildContext context)async{
+    if(displayNameController.text.isNotEmpty){
+      notify(true);
+       await FirebaseAuth.instance.currentUser?.updateDisplayName(displayNameController.text);
+      notify(false);
+    }else{
+      manageMessage(context, "display name empty");
+    }
+  }
+
 }

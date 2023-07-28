@@ -32,4 +32,7 @@ class AppImages{
   static String wishlistColorful = "assets/svg/wishlist_colorful.svg";
   static String x = "assets/svg/x.svg";
   static String google = "assets/svg/google.svg";
+
+
+  static String checkLoader = "assets/svg/check_loader.json";
 }

@@ -5,10 +5,11 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/profile_provider.dart';
 import 'package:techno_city/ui/auth/widgets/global_text_fields.dart';
-import 'package:techno_city/utils/app_images.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../providers/auth_provider.dart';
 import '../../utils/app_colors.dart';
+import '../../utils/app_images.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -27,69 +28,82 @@ class _ProfileScreenState extends State<ProfileScreen> {
           "Profil Screen",
           style: TextStyle(color: Colors.black),
         ),
+        elevation: 5,
+        actions: [
+          IconButton(
+              onPressed: () {
+                context.read<AuthProvider>().logOutUser(context);
+              },
+              icon: const Icon(
+                Icons.logout_outlined,
+                color: Colors.black,
+              ))
+        ],
       ),
       body: Stack(
         children: [
           Container(
             color: AppColors.c_FAFAFA,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        user?.email ?? "",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.c_13181F),
-                      ),
-                      Text(
-                        user?.displayName ?? "",
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.c_13181F),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GlobalTextField(
-                            hintText: "display name",
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.next,
-                            textAlign: TextAlign.start,
-                            controller: context
-                                .read<ProfileProvider>()
-                                .displayNameController),
-                      ),
-                      TextButton(
-                          onPressed: () {
-                            setState(() {
-                              context
-                                  .read<ProfileProvider>()
-                                  .updateUserDisplayName(context);
-                              context
-                                  .read<ProfileProvider>()
-                                  .displayNameController
-                                  .clear();
-                            });
-                          },
-                          child: Text("update display name")),
-                      Center(
+            child: Padding(
+              padding:  EdgeInsets.all(26.r),
+              child: ListView(
+                children: [
+                  Text(
+                    "Username: ${user!.displayName==""?"Empty":user.displayName}",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.c_13181F),
+                  ),
+                  Text(
+                    "Email: ${user.email==""?"Empty":user.email}",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.c_13181F),
+                  ),
+
+                  SizedBox(height: 20.h,),
+                  GlobalTextField(
+                      hintText: "Display name",
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      textAlign: TextAlign.start,
+                      controller: context
+                          .read<ProfileProvider>()
+                          .displayNameController),
+                  SizedBox(height: 20.h,),
+                  GlobalTextField(
+                      hintText: "Email",
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      textAlign: TextAlign.start,
+                      controller: context
+                          .read<ProfileProvider>()
+                          .emailController),
+                  SizedBox(height: 20.h,),
+                  ZoomTapAnimation(
+                    onTap: (){
+                      context.read<ProfileProvider>().updateEmail(context);
+                      context.read<ProfileProvider>().updateUserDisplayName(context);
+                    },
+                    child: Container(
+                      width: 100.w,
+                      height: 50.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16.r),
+                          color: AppColors.c_3669C9),
+                      child: Center(
                         child: Text(
-                          "tabBox",
-                          style: TextStyle(color: AppColors.c_3669C9),
+                          "SAVE",
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              color: AppColors.white,
+                              fontFamily: "DM Sans"),
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            context.read<AuthProvider>().logOutUser(context);
-                          },
-                          child: const Text("log out"))
-                    ],
-                  ),
+                    ),
+                  )
                 ],
               ),
             ),

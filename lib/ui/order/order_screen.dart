@@ -8,6 +8,7 @@ class OrderScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Order Screen",style: TextStyle(color: Colors.black)),
+        elevation: 5,
       ),
     );
   }

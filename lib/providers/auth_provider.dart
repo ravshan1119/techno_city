@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:techno_city/data/firebase/auth_service.dart';
-import 'package:techno_city/data/model/univarsal_data.dart';
+import 'package:techno_city/data/model/universal_data.dart';
 
 class AuthProvider with ChangeNotifier {
   AuthProvider({required this.authService});
@@ -67,6 +67,8 @@ class AuthProvider with ChangeNotifier {
   Future<void> logOutUser(BuildContext context) async {
     notify(true);
     UniversalData universalData = await authService.logOutUser();
+    emailController.clear();
+    passwordController.clear();
     notify(false);
 
     if (universalData.error.isEmpty) {

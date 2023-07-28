@@ -9,6 +9,8 @@ import 'package:techno_city/providers/profile_provider.dart';
 import 'package:techno_city/providers/tab_box_provider.dart';
 import 'package:techno_city/utils/theme.dart';
 
+import 'data/firebase/profile_service.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -24,11 +26,11 @@ Future<void> main() async {
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfileProvider(),
+          create: (context) => ProfileProvider(profileService: ProfileService()),
           lazy: true,
         ),
       ],
-      child: MyApp(),
+      child:const MyApp(),
     ),
   );
 }

@@ -7,7 +7,11 @@ class WishlistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Wishlist Screen",style: TextStyle(color: Colors.black),),
+        title: Text(
+          "Wishlist Screen",
+          style: TextStyle(color: Colors.black),
+        ),
+        elevation: 5,
       ),
     );
   }

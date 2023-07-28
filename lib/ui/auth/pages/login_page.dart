@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
                   obscureText: true,
                     hintText: "password",
                     keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
+                    textInputAction: TextInputAction.done,
                     textAlign: TextAlign.start,
                     controller:
                     context.read<AuthProvider>().passwordController),

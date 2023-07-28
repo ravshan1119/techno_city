@@ -18,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
           "Profil Screen",
           style: TextStyle(color: Colors.black),
         ),
+        elevation: 5,
       ),
       body: Container(
         color: AppColors.c_FAFAFA,
@@ -29,24 +30,18 @@ class ProfileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    user?.email ?? "",
+                    user?.email ?? "Empty",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         color: AppColors.c_13181F),
                   ),
                   Text(
-                    user?.displayName ?? "",
+                    user?.displayName ?? "Empty",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
                         color: AppColors.c_13181F),
-                  ),
-                  Center(
-                    child: Text(
-                      "tabBox",
-                      style: TextStyle(color: AppColors.c_3669C9),
-                    ),
                   ),
                   TextButton(
                       onPressed: () {

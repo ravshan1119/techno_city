@@ -74,8 +74,8 @@ class SignUpScreen extends StatelessWidget {
                 GlobalTextField(
                     hintText: "password",
                     obscureText: true,
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.done,
                     textAlign: TextAlign.start,
                     controller:
                         context.read<AuthProvider>().passwordController),

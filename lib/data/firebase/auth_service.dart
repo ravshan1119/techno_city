@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:techno_city/data/model/univarsal_data.dart';
+import 'package:techno_city/data/model/universal_data.dart';
 
 class AuthService {
   Future<UniversalData> signUpUser(

@@ -67,6 +67,8 @@ class AuthProvider with ChangeNotifier {
   Future<void> logOutUser(BuildContext context) async {
     notify(true);
     UniversalData universalData = await authService.logOutUser();
+    emailController.clear();
+    passwordController.clear();
     notify(false);
 
     if (universalData.error.isEmpty) {

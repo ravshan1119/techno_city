@@ -24,7 +24,7 @@ class GlobalTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       style: TextStyle(
-          fontSize: 14.spMin,
+          fontSize: 18.sp,
           fontWeight: FontWeight.w600,
           color: AppColors.c_0C1A30,
           fontFamily: "DMSans"),
@@ -38,40 +38,43 @@ class GlobalTextField extends StatelessWidget {
         fillColor: AppColors.white,
         hintText: hintText,
         hintStyle: TextStyle(
-            fontSize: 14.spMin,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.c_C4C5C4,
             fontFamily: "DMSans"),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(width: 1, color: AppColors.white),
+          borderSide: BorderSide(
+            width: 1,
+            color: AppColors.c_13181F,
+          ),
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 1,
-            color: AppColors.white,
+            color: AppColors.c_13181F,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 1,
-            color: AppColors.white,
+            color: AppColors.c_13181F,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 1,
-            color: AppColors.white,
+            color: AppColors.c_13181F,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 1,
-            color: AppColors.white,
+            color: AppColors.c_13181F,
           ),
         ),
       ),

@@ -12,11 +12,10 @@ class ProfileProvider with ChangeNotifier {
 
   final ProfileService profileService;
 
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  TextEditingController displayNameController = TextEditingController();
+  final TextEditingController displayNameController = TextEditingController();
 
   bool isLoading = false;
 
@@ -44,10 +43,13 @@ class ProfileProvider with ChangeNotifier {
 
   }
 
-  updateUserDisplayName(BuildContext context){
-    String name = nameController.text;
+ Future<void> updateUserDisplayName(BuildContext context)async{
+    String name = displayNameController.text;
     if(name.isNotEmpty){
-      FirebaseAuth.instance.currentUser?.updateDisplayName(name);
+      notify(true);
+     await  FirebaseAuth.instance.currentUser?.updateDisplayName(name);
+     displayNameController.clear();
+     notify(false);
     }else{
       showMessage(context, "Username empty");
     }

@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Screen",style: TextStyle(color: Colors.black),),
+        elevation: 5,
       ),
     );
   }

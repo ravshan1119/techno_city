@@ -16,6 +16,8 @@ class ProfileProvider with ChangeNotifier {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
+  TextEditingController displayNameController = TextEditingController();
+
   bool isLoading = false;
 
   User? currentUser;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -22,13 +21,10 @@ class SignUpScreen extends StatelessWidget {
       children: [
         SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w,vertical: 25.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 70.h,
-                ),
                 Text(
                   """Register Account""",
                   style: TextStyle(
@@ -82,10 +78,16 @@ class SignUpScreen extends StatelessWidget {
                 SizedBox(
                   height: 100.h,
                 ),
-                TextButton(
-                    onPressed: () {
-                      context.read<AuthProvider>().signInWithGoogle(context);
-                    },
+                ZoomTapAnimation(
+                  onTap: (){
+                    context.read<AuthProvider>().signInWithGoogle(context);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.r),
+                      border: Border.all(width: 1,color: AppColors.textColorLight)
+                    ),
+                    height: 50.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -95,7 +97,9 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         SvgPicture.asset(AppImages.google),
                       ],
-                    )),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 30.h,
                 ),

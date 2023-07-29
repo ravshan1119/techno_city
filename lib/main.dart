@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/app/app.dart';
 import 'package:techno_city/data/firebase/auth_service.dart';
+import 'package:techno_city/data/firebase/category_service.dart';
 import 'package:techno_city/providers/auth_provider.dart';
+import 'package:techno_city/providers/category_provider.dart';
 import 'package:techno_city/providers/profile_provider.dart';
 import 'package:techno_city/providers/tab_box_provider.dart';
 import 'package:techno_city/utils/theme.dart';
@@ -27,6 +29,10 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => ProfileProvider(profileService: ProfileService()),
+          lazy: true,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CategoryProvider(categoryService: CategoryService()),
           lazy: true,
         ),
       ],

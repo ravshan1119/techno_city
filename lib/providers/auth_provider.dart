@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:techno_city/data/firebase/auth_service.dart';
 import 'package:techno_city/data/model/universal_data.dart';
+import 'package:techno_city/utils/ui_utils/error_message_dialog.dart';
+import 'package:techno_city/utils/ui_utils/loading_dialog.dart';
 
 class AuthProvider with ChangeNotifier {
   AuthProvider({required this.authService});
@@ -11,7 +13,6 @@ class AuthProvider with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  bool isLoading = false;
   String errorText = "";
 
   loginButtonPressed() {
@@ -29,18 +30,21 @@ class AuthProvider with ChangeNotifier {
   Future<void> signUpUser(BuildContext context) async {
     String password = passwordController.text;
     String email = emailController.text;
-    notify(true);
+    showLoading(context: context);
+
     UniversalData universalData =
         await authService.signUpUser(email: email, password: password);
-    notify(false);
+    if (context.mounted) {
+      hideLoading(dialogContext: context);
+    }
 
     if (universalData.error.isEmpty) {
       if (context.mounted) {
-        manageMessage(context, "User signed Up");
+        showConfirmMessage(message: "User signed Up", context: context);
       }
     } else {
       if (context.mounted) {
-        manageMessage(context, universalData.error);
+        showErrorMessage(message: universalData.error, context: context);
       }
     }
   }
@@ -48,68 +52,76 @@ class AuthProvider with ChangeNotifier {
   Future<void> loginUser(BuildContext context) async {
     String password = passwordController.text;
     String email = emailController.text;
-    notify(true);
+    showLoading(context: context);
+
     UniversalData universalData =
         await authService.loginUser(email: email, password: password);
-    notify(false);
+    if (context.mounted) {
+      hideLoading(dialogContext: context);
+    }
 
     if (universalData.error.isEmpty) {
       if (context.mounted) {
-        manageMessage(context, "User logged in");
+        showConfirmMessage(message: "User logged in", context: context);
       }
     } else {
       if (context.mounted) {
-        manageMessage(context, universalData.error);
+        showErrorMessage(message: universalData.error, context: context);
       }
     }
   }
 
   Future<void> logOutUser(BuildContext context) async {
-    notify(true);
+    showLoading(context: context);
+
     UniversalData universalData = await authService.logOutUser();
     emailController.clear();
     passwordController.clear();
-    notify(false);
+    if (context.mounted) {
+      hideLoading(dialogContext: context);
+    }
 
     if (universalData.error.isEmpty) {
       if (context.mounted) {
-        manageMessage(context, "User logged in");
+        showConfirmMessage(message: "User logged in", context: context);
       }
     } else {
       if (context.mounted) {
-        manageMessage(context, universalData.error);
+        showErrorMessage(message: universalData.error, context: context);
       }
     }
   }
 
   Future<void> signInWithGoogle(BuildContext context) async {
-    notify(true);
+    showLoading(context: context);
     UniversalData universalData = await authService.signInWithGoogle();
-    notify(false);
-
+    if (context.mounted) {
+      hideLoading(dialogContext: context);
+    }
     if (universalData.error.isEmpty) {
       if (context.mounted) {
-        manageMessage(context, "User Signed Up with Google.");
+        showConfirmMessage(
+            message: "User Signed Up with Google.", context: context);
       }
     } else {
       if (context.mounted) {
-        manageMessage(context, universalData.error);
+        showErrorMessage(message: universalData.error, context: context);
       }
     }
   }
-
-  notify(bool value) {
-    isLoading = value;
-    notifyListeners();
-  }
-
-  manageMessage(BuildContext context, String error) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(error.toString())));
-
-    isLoading = false;
-    notifyListeners();
-  }
+//
+// notify(bool value) {
+//   isLoading = value;
+//   notifyListeners();
+// }
+//
+// manageMessage(BuildContext context, String error) {
+//   ScaffoldMessenger.of(context)
+//       .showSnackBar(SnackBar(content: Text(error.toString())));
+//
+//   isLoading = false;
+//   notifyListeners();
+// }
 }
 
 // _checkAuthState() {

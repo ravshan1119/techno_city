@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:techno_city/ui/auth/pages/login_page.dart';
 import 'package:techno_city/ui/auth/pages/sign_up_page.dart';
 
-import '../../providers/auth_provider.dart';
 
 
 class AuthScreen extends StatefulWidget {
@@ -22,31 +20,20 @@ class _AuthScreenState extends State<AuthScreen> {
         appBar: AppBar(
           title: Text(isLoginPage ? "Login" : "Sign Up"),
         ),
-        body: Stack(
-          children: [
-            isLoginPage
-                ? LoginPage(
-              onChanged: () {
-                setState(() {
-                  isLoginPage = false;
-                });
-              },
-            )
-                : SignUpScreen(
-              onChanged: () {
-                setState(() {
-                  isLoginPage = true;
-                });
-              },
-            ),
-            Visibility(
-              visible: context.watch<AuthProvider>().isLoading,
-              child: const Align(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(),
-              ),
-            )
-          ],
+        body: isLoginPage
+            ? LoginPage(
+          onChanged: () {
+            setState(() {
+              isLoginPage = false;
+            });
+          },
+        )
+            : SignUpScreen(
+          onChanged: () {
+            setState(() {
+              isLoginPage = true;
+            });
+          },
         ));
   }
 }

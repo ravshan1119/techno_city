@@ -16,6 +16,7 @@ class AppColors {
   static Color c_838589 = const Color(0xFF838589);
   static Color c_EDEDED = const Color(0xFFEDEDED);
   static Color c_C4C5C4 = const Color(0xFFC4C5C4);
+  static Color c_273032 = const Color(0xFF273032);
 
   // Label
   static Color c_EFF5FB = const Color(0xFFEFF5FB);

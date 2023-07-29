@@ -8,6 +8,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.c_13181F,
     appBarTheme:  AppBarTheme(
+      iconTheme: const IconThemeData(color: Colors.black54),
       elevation: 0,
       backgroundColor: AppColors.c_13181F,
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -103,6 +104,7 @@ class AppTheme {
   static ThemeData lightTheme =ThemeData(
     scaffoldBackgroundColor: AppColors.c_FAFAFA,
     appBarTheme:  AppBarTheme(
+      iconTheme: const IconThemeData(color: Colors.black54),
       elevation: 0,
       backgroundColor: AppColors.c_FAFAFA,
       systemOverlayStyle: SystemUiOverlayStyle(

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:techno_city/ui/home/widgets/add_category.dart';
 import 'package:techno_city/ui/home/widgets/category_list_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

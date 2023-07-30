@@ -14,6 +14,7 @@ class CategoryProvider with ChangeNotifier {
 
   TextEditingController addNameController = TextEditingController();
   TextEditingController addDescriptionController = TextEditingController();
+  String categoryType="";
 
   Future<void> addCategory({
     required BuildContext context,

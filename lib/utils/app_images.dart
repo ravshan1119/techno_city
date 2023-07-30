@@ -36,4 +36,5 @@ class AppImages{
 
 
   static String checkLoader = "assets/svg/check_loader.json";
+  static String emptyState = "assets/svg/empty_state.json";
 }

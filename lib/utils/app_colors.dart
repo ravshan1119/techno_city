@@ -11,6 +11,7 @@ class AppColors {
   static Color textColorDark= const Color(0xFFFFFFFF);
   // Secondary
   static Color c_3A9B7A = const Color(0xFF3A9B7A);
+  static Color c_E4F3EA = const Color(0xFFE4F3EA);
   static Color c_C93545 = const Color(0xFFC93545);
   static Color c_FAFAFA = const Color(0xFFFAFAFA);
   static Color c_838589 = const Color(0xFF838589);
@@ -22,4 +23,7 @@ class AppColors {
   static Color c_EFF5FB = const Color(0xFFEFF5FB);
   static Color c_EEFAF6 = const Color(0xFFEEFAF6);
   static Color c_FCECEF = const Color(0xFFFCECEF);
+  static Color c_FFECE8 = const Color(0xFFFFECE8);
+  static Color c_FFF6E4 = const Color(0xFFFFF6E4);
+  static Color c_F1EDFC = const Color(0xFFF1EDFC);
 }

@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/data/model/category/category_model.dart';
 import 'package:techno_city/providers/category_provider.dart';
-import 'package:techno_city/ui/home/widgets/update_category.dart';
+import 'package:techno_city/ui/tab/home/widgets/update_category.dart';
 import 'package:techno_city/utils/app_colors.dart';
 import 'package:techno_city/utils/app_images.dart';
 

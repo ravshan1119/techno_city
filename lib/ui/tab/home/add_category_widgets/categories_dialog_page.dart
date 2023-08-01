@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/category_provider.dart';
-import 'package:techno_city/ui/home/add_category_widgets/categories.dart';
+import 'package:techno_city/ui/tab/home/add_category_widgets/categories.dart';
 import 'package:techno_city/utils/app_colors.dart';
 import 'package:techno_city/utils/app_images.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';

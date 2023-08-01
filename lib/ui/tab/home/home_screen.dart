@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:techno_city/ui/home/widgets/add_category.dart';
-import 'package:techno_city/ui/home/widgets/category_list_page.dart';
+import 'package:techno_city/ui/tab/home/widgets/add_category.dart';
+import 'package:techno_city/ui/tab/home/widgets/category_list_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreenAdmin extends StatefulWidget {
+  const HomeScreenAdmin({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenAdmin> createState() => _HomeScreenAdminState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenAdminState extends State<HomeScreenAdmin> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    AddCategoryPage(),
     CategoriesListPage(),
+    AddCategoryPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Home Screen",
+          "Home Screen Admin",
           style: TextStyle(color: Colors.black),
         ),
         elevation: 5,
@@ -55,17 +55,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             ListTile(
               title: const Text('Add Category'),
-              selected: _selectedIndex == 0,
+              selected: _selectedIndex == 1,
               onTap: () {
-                _onItemTapped(0);
+                _onItemTapped(1);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Categories list'),
-              selected: _selectedIndex == 1,
+              selected: _selectedIndex == 0,
               onTap: () {
-                _onItemTapped(1);
+                _onItemTapped(0);
                 Navigator.pop(context);
               },
             ),

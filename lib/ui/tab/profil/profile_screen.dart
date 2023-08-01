@@ -4,22 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:techno_city/providers/auth_provider.dart';
 import 'package:techno_city/providers/profile_provider.dart';
 import 'package:techno_city/ui/auth/widgets/global_text_fields.dart';
+import 'package:techno_city/utils/app_colors.dart';
+import 'package:techno_city/utils/app_images.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../../providers/auth_provider.dart';
-import '../../utils/app_colors.dart';
-import '../../utils/app_images.dart';
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class ProfileScreenAdmin extends StatefulWidget {
+  const ProfileScreenAdmin({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<ProfileScreenAdmin> createState() => _ProfileScreenAdminState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenAdminState extends State<ProfileScreenAdmin> {
   @override
   Widget build(BuildContext context) {
     User? user = context.read<ProfileProvider>().currentUser;

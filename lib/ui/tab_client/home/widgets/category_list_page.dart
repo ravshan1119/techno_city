@@ -1,10 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/data/model/category/category_model.dart';
 import 'package:techno_city/providers/category_provider.dart';
-import 'package:techno_city/ui/tab/home/widgets/update_category.dart';
-import 'package:techno_city/utils/app_colors.dart';
 import 'package:techno_city/utils/app_images.dart';
 
 class CategoriesListPage extends StatefulWidget {
@@ -30,6 +30,8 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                       (index) {
                         CategoryModel categoryModel = snapshot.data![index];
                         return ListTile(
+                          leading: Image.file(File(categoryModel.imageUrl)),
+
                           onLongPress: () {
                             context.read<CategoryProvider>().deleteCategory(
                                 context: context,

@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/category_provider.dart';
 import 'package:techno_city/ui/tab/home/widgets/add_category.dart';
+import 'package:techno_city/ui/tab/home/widgets/add_product.dart';
 import 'package:techno_city/ui/tab/home/widgets/category_list_page.dart';
+import 'package:techno_city/ui/tab/home/widgets/product_list_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
 class HomeScreenAdmin extends StatefulWidget {
   const HomeScreenAdmin({super.key});
@@ -17,6 +19,8 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
   static const List<Widget> _widgetOptions = <Widget>[
     CategoriesListPage(),
     AddCategoryPage(),
+    ProductsListPage(),
+
   ];
 
   void _onItemTapped(int index) {
@@ -33,6 +37,21 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
           "Home Screen Admin",
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProductAddScreen();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(Icons.add),
+          )
+        ],
         elevation: 5,
       ),
       body: Center(
@@ -56,6 +75,14 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
               ),
             ),
             ListTile(
+              title: const Text('Product List'),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                _onItemTapped(2);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
               title: const Text('Add Category'),
               selected: _selectedIndex == 1,
               onTap: () {
@@ -73,6 +100,7 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
                 Navigator.pop(context);
               },
             ),
+
           ],
         ),
       ),

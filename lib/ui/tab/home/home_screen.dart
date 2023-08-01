@@ -13,8 +13,8 @@ class HomeScreenAdmin extends StatefulWidget {
 class _HomeScreenAdminState extends State<HomeScreenAdmin> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    AddCategoryPage(),
     CategoriesListPage(),
+    AddCategoryPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -55,17 +55,17 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
             ),
             ListTile(
               title: const Text('Add Category'),
-              selected: _selectedIndex == 0,
+              selected: _selectedIndex == 1,
               onTap: () {
-                _onItemTapped(0);
+                _onItemTapped(1);
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Categories list'),
-              selected: _selectedIndex == 1,
+              selected: _selectedIndex == 0,
               onTap: () {
-                _onItemTapped(1);
+                _onItemTapped(0);
                 Navigator.pop(context);
               },
             ),

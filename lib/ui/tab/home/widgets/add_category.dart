@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:techno_city/data/model/category/category_model.dart';
 import 'package:techno_city/providers/category_provider.dart';
 import 'package:techno_city/ui/auth/widgets/global_button.dart';
 import 'package:techno_city/ui/auth/widgets/global_text_fields.dart';
@@ -88,24 +87,39 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
               ),
             ),
             SizedBox(height: 20.h),
-            SizedBox(
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r)
+              ),
+              height: 50.h,
               width: double.infinity,
-              child: TextButton(
-                onPressed: () {
+              child: ZoomTapAnimation(
+                onTap: (){
                   showBottomSheetDialog();
                 },
-                style: TextButton.styleFrom(
-                    backgroundColor: Theme.of(context).indicatorColor),
-                child: imagePath == defaultImageConstant
-                    ? Text(
+                child: Container(
+                  height: 50.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.sp),
+                      color: AppColors.c_FDA429),
+                  child: Center(
+                      child: imagePath == defaultImageConstant
+                          ? Text(
                         imagePath,
-                        style: const TextStyle(color: Colors.white),
+                        style:  TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.white,
+                          fontSize: 18.sp,
+                          fontFamily: "LeagueSpartan",
+                        ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       )
-                    : Image.file(
+                          : Image.file(
                         File(imagePath),
-                      ),
+                      ),),
+                ),
               ),
             ),
             SizedBox(height: 20.h),

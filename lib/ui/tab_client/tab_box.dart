@@ -19,11 +19,11 @@ class TabBoxClientState extends State<TabBoxClient> {
   Widget build(BuildContext context) {
     var provider = Provider.of<TabBoxClientProvider>(context, listen: false);
     return Scaffold(
-      body: Consumer<TabBoxProvider>(
+      body: Consumer<TabBoxClientProvider>(
         builder: (context, value, Widget? child) =>
             provider.screens[provider.getCurrentScreen],
       ),
-      bottomNavigationBar: Consumer<TabBoxProvider>(
+      bottomNavigationBar: Consumer<TabBoxClientProvider>(
         builder: (context, value, Widget? child) => BottomNavigationBar(
           elevation: 10,
           selectedItemColor: AppColors.c_3669C9,

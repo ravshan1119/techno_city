@@ -34,44 +34,10 @@ class _HomeScreenClientState extends State<HomeScreenClient> {
         elevation: 5,
       ),
       body: Center(
-        child: _widgetOptions[_selectedIndex],
-      ),
-      drawer: Drawer(
-        backgroundColor: AppColors.white,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-              ),
-              child: Text(
-                'Techno City',
-                style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "DMSans"),
-              ),
-            ),
-            ListTile(
-              title: const Text('Add Category'),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                _onItemTapped(0);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Categories list'),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                _onItemTapped(1);
-                Navigator.pop(context);
-              },
-            ),
-          ],
+        child: Text(
+          "You are client"
         ),
-      ),
+      )
     );
   }
 }

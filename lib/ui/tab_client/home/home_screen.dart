@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:techno_city/ui/home/widgets/add_category.dart';
-import 'package:techno_city/ui/home/widgets/category_list_page.dart';
+import 'package:techno_city/ui/tab/home/widgets/add_category.dart';
+import 'package:techno_city/ui/tab/home/widgets/category_list_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreenClient extends StatefulWidget {
+  const HomeScreenClient({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreenClient> createState() => _HomeScreenClientState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenClientState extends State<HomeScreenClient> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     AddCategoryPage(),

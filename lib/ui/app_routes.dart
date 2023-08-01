@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:techno_city/ui/auth/auth_screen.dart';
-import 'package:techno_city/ui/home/home_screen.dart';
-import 'package:techno_city/ui/order/order_screen.dart';
-import 'package:techno_city/ui/profil/profile_screen.dart';
+import 'package:techno_city/ui/tab/home/home_screen.dart';
+import 'package:techno_city/ui/tab/order/order_screen.dart';
+import 'package:techno_city/ui/tab/profil/profile_screen.dart';
 import 'package:techno_city/ui/tab/tab_box.dart';
-import 'package:techno_city/ui/wishlist/wishlist_screen.dart';
+import 'package:techno_city/ui/tab/wishlist/wishlist_screen.dart';
 
 
 class RouteNames {
@@ -25,23 +25,23 @@ class AppRoutes {
         );
       case RouteNames.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => const HomeScreenAdmin(),
         );
       case RouteNames.orderScreen:
         return MaterialPageRoute(
-          builder: (context) => const OrderScreen(),
+          builder: (context) => const OrderScreenAdmin(),
         );
       case RouteNames.wishlistScreen:
         return MaterialPageRoute(
-          builder: (context) => const WishlistScreen(),
+          builder: (context) => const WishlistScreenAdmin(),
         );
       case RouteNames.profileScreen:
         return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
+          builder: (context) => const ProfileScreenAdmin(),
         );
       case RouteNames.tabBox:
         return MaterialPageRoute(
-          builder: (context) =>  TabBox(),
+          builder: (context) =>  TabBoxAdmin(),
         );
       default:
         return MaterialPageRoute(

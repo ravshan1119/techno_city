@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/auth_provider.dart';
 import 'package:techno_city/ui/tab/tab_box.dart';
+import 'package:techno_city/ui/tab_client/tab_box.dart';
+import 'package:techno_city/utils/constants.dart';
 
 import '../ui/auth/auth_screen.dart';
+
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -19,7 +22,9 @@ class App extends StatelessWidget {
           } else if (snapshot.data == null) {
             return const AuthScreen();
           } else {
-            return  TabBox();
+            return snapshot.data!.email == adminEmail
+                ? const TabBoxAdmin()
+                : const TabBoxClient();
           }
         },
       ),

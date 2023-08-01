@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:techno_city/ui/home/home_screen.dart';
-import 'package:techno_city/ui/order/order_screen.dart';
-import 'package:techno_city/ui/profil/profile_screen.dart';
-import 'package:techno_city/ui/wishlist/wishlist_screen.dart';
+import 'package:techno_city/ui/tab/home/home_screen.dart';
+import 'package:techno_city/ui/tab/order/order_screen.dart';
+import 'package:techno_city/ui/tab/profil/profile_screen.dart';
+import 'package:techno_city/ui/tab/wishlist/wishlist_screen.dart';
 
 class TabBoxProvider extends ChangeNotifier {
   int _currentScreen = 0;
@@ -10,16 +10,16 @@ class TabBoxProvider extends ChangeNotifier {
   TabBoxProvider();
 
   List<Widget> screens = [
-    HomeScreen(),
-    WishlistScreen(),
-    OrderScreen(),
-    ProfileScreen()
+    HomeScreenAdmin(),
+    WishlistScreenAdmin(),
+    OrderScreenAdmin(),
+    ProfileScreenAdmin()
   ];
 
-  get getCurrentScreen=>_currentScreen;
+  get getCurrentScreen => _currentScreen;
 
-  setCurrentScreen(int currentIndex){
-    _currentScreen=currentIndex;
+  setCurrentScreen(int currentIndex) {
+    _currentScreen = currentIndex;
     notifyListeners();
   }
 }

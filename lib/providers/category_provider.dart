@@ -18,23 +18,41 @@ class CategoryProvider with ChangeNotifier {
 
   Future<void> addCategory({
     required BuildContext context,
-    required CategoryModel categoryModel,
+    required String imageUrl,
   }) async {
-    showLoading(context: context);
-    UniversalData universalData =
-        await categoryService.addCategory(categoryModel: categoryModel);
-    if (context.mounted) {
-      hideLoading(dialogContext: context);
-    }
-    if (universalData.error.isEmpty) {
+
+    if (addNameController.text.isNotEmpty && addDescriptionController.text.isNotEmpty) {
+      CategoryModel categoryModel = CategoryModel(
+        categoryId: "",
+        categoryName: addNameController.text,
+        description: addDescriptionController.text,
+        imageUrl: imageUrl,
+        createdAt: DateTime.now().toString(),
+      );
+      showLoading(context: context);
+      UniversalData universalData =
+      await categoryService.addCategory(categoryModel: categoryModel);
       if (context.mounted) {
-        showMessage(context, universalData.data as String);
+        hideLoading(dialogContext: context);
+      }
+      if (universalData.error.isEmpty) {
+        if (context.mounted) {
+          showMessage(context, universalData.data as String);
+          clearTexts();
+        }
+      } else {
+        if (context.mounted) {
+          showMessage(context, universalData.error);
+        }
       }
     } else {
-      if (context.mounted) {
-        showMessage(context, universalData.error);
-      }
+      showMessage(context, "Maydonlar to'liq emas!!!");
     }
+
+
+
+
+
   }
 
   Future<void> updateCategory({
@@ -93,4 +111,10 @@ class CategoryProvider with ChangeNotifier {
                 .map((doc) => CategoryModel.fromJson(doc.data()))
                 .toList(),
           );
+
+
+  clearTexts() {
+    addNameController.clear();
+    addDescriptionController.clear();
+  }
 }

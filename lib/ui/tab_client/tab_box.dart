@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:techno_city/providers/tab_box_client_provider.dart';
 import 'package:techno_city/providers/tab_box_provider.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/app_images.dart';
 
-class TabBoxAdmin extends StatefulWidget {
-  const TabBoxAdmin({super.key});
+class TabBoxClient extends StatefulWidget {
+  const TabBoxClient({super.key});
 
   @override
-  TabBoxAdminState createState() => TabBoxAdminState();
+  TabBoxClientState createState() => TabBoxClientState();
 }
 
-class TabBoxAdminState extends State<TabBoxAdmin> {
+class TabBoxClientState extends State<TabBoxClient> {
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<TabBoxProvider>(context, listen: false);
+    var provider = Provider.of<TabBoxClientProvider>(context, listen: false);
     return Scaffold(
       body: Consumer<TabBoxProvider>(
         builder: (context, value, Widget? child) =>

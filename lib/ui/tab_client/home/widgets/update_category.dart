@@ -5,7 +5,7 @@ import 'package:techno_city/data/model/category/category_model.dart';
 import 'package:techno_city/providers/category_provider.dart';
 import 'package:techno_city/ui/auth/widgets/global_button.dart';
 import 'package:techno_city/ui/auth/widgets/global_text_fields.dart';
-import 'package:techno_city/ui/home/add_category_widgets/categories_dialog_page.dart';
+import 'package:techno_city/ui/tab/home/add_category_widgets/categories_dialog_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 

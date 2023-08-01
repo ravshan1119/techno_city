@@ -29,6 +29,7 @@ class _UpdateCategoryPageState extends State<UpdateCategoryPage> {
   ImagePicker picker = ImagePicker();
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,24 +99,32 @@ class _UpdateCategoryPageState extends State<UpdateCategoryPage> {
                 height: 20.h,
               ),
 
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {
-                    showBottomSheetDialog();
-                  },
-                  style: TextButton.styleFrom(
-                      backgroundColor: Theme.of(context).indicatorColor),
-                  child: imagePath == defaultImageConstant
-                      ? Text(
-                    imagePath,
-                    style: const TextStyle(color: Colors.white),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  )
-                      : Image.file(
-                    File(imagePath),
-                  ),
+              ZoomTapAnimation(
+                onTap: (){
+                  showBottomSheetDialog();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(14.sp),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: AppColors.c_FDA429),
+                  child: Center(
+                    child: imagePath == defaultImageConstant
+                        ? Text(
+                      imagePath,
+                      style:  TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.white,
+                        fontSize: 18.sp,
+                        fontFamily: "LeagueSpartan",
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                        : Image.file(
+                      File(imagePath),
+                    ),),
                 ),
               ),
               SizedBox(height: 20.h),

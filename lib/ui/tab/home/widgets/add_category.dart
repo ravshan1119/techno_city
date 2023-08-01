@@ -87,39 +87,32 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
               ),
             ),
             SizedBox(height: 20.h),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.r)
-              ),
-              height: 50.h,
-              width: double.infinity,
-              child: ZoomTapAnimation(
-                onTap: (){
-                  showBottomSheetDialog();
-                },
-                child: Container(
-                  height: 50.h,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.sp),
-                      color: AppColors.c_FDA429),
-                  child: Center(
-                      child: imagePath == defaultImageConstant
-                          ? Text(
-                        imagePath,
-                        style:  TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.white,
-                          fontSize: 18.sp,
-                          fontFamily: "LeagueSpartan",
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      )
-                          : Image.file(
-                        File(imagePath),
-                      ),),
-                ),
+            ZoomTapAnimation(
+              onTap: (){
+                showBottomSheetDialog();
+              },
+              child: Container(
+                padding: EdgeInsets.all(14.sp),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    color: AppColors.c_FDA429),
+                child: Center(
+                    child: imagePath == defaultImageConstant
+                        ? Text(
+                      imagePath,
+                      style:  TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.white,
+                        fontSize: 18.sp,
+                        fontFamily: "LeagueSpartan",
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                        : Image.file(
+                      File(imagePath),
+                    ),),
               ),
             ),
             SizedBox(height: 20.h),

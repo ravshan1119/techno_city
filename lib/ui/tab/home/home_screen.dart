@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:techno_city/providers/category_provider.dart';
 import 'package:techno_city/ui/tab/home/widgets/add_category.dart';
 import 'package:techno_city/ui/tab/home/widgets/category_list_page.dart';
 import 'package:techno_city/utils/app_colors.dart';
@@ -57,6 +59,8 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
               title: const Text('Add Category'),
               selected: _selectedIndex == 1,
               onTap: () {
+                context.read<CategoryProvider>().addNameController.clear();
+                context.read<CategoryProvider>().addDescriptionController.clear();
                 _onItemTapped(1);
                 Navigator.pop(context);
               },

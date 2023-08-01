@@ -39,7 +39,7 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                           subtitle: Text(categoryModel.description),
                           trailing: IconButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateCategoryPage()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateCategoryPage(categoryId: categoryModel.categoryId,imageUrl: categoryModel.imageUrl,)));
                               // context.read<CategoryProvider>().updateCategory(
                               //   context: context,
                               //   categoryModel: CategoryModel(

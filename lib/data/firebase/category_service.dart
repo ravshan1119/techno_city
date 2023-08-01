@@ -34,7 +34,7 @@ class CategoryService {
           .doc(categoryModel.categoryId)
           .update(categoryModel.toJson());
 
-      return UniversalData(data: "Category added!");
+      return UniversalData(data: "Category updated!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (err) {

@@ -14,9 +14,10 @@ import 'package:techno_city/utils/constants.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class UpdateCategoryPage extends StatefulWidget {
-  const UpdateCategoryPage({super.key, this.categoryId=""});
+  const UpdateCategoryPage({super.key, required this.categoryId, required this.imageUrl});
 
   final String categoryId;
+  final String imageUrl;
 
   @override
   State<UpdateCategoryPage> createState() => _UpdateCategoryPageState();

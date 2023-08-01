@@ -37,27 +37,27 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                           },
                           title: Text(categoryModel.categoryName),
                           subtitle: Text(categoryModel.description),
-                          trailing: IconButton(
-                            onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateCategoryPage(categoryId: categoryModel.categoryId,)));
-                              // context.read<CategoryProvider>().updateCategory(
-                              //   context: context,
-                              //   categoryModel: CategoryModel(
-                              //     categoryId: categoryModel.categoryId,
-                              //     categoryName: "Planshetlar zo'ridan",
-                              //     description: "Zo'r telefonlar zo'ridan",
-                              //     imageUrl: "imageUrl",
-                              //     createdAt: DateTime.now().toString(),
-                              //   ),
-                              // );
-
-
-                            },
-                            icon: Icon(
-                              Icons.edit,
-                              color: AppColors.c_3669C9,
-                            ),
-                          ),
+                          // trailing: IconButton(
+                          //   onPressed: () {
+                          //     Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateCategoryPage(categoryId: categoryModel.categoryId,)));
+                          //     // context.read<CategoryProvider>().updateCategory(
+                          //     //   context: context,
+                          //     //   categoryModel: CategoryModel(
+                          //     //     categoryId: categoryModel.categoryId,
+                          //     //     categoryName: "Planshetlar zo'ridan",
+                          //     //     description: "Zo'r telefonlar zo'ridan",
+                          //     //     imageUrl: "imageUrl",
+                          //     //     createdAt: DateTime.now().toString(),
+                          //     //   ),
+                          //     // );
+                          //
+                          //
+                          //   },
+                          //   icon: Icon(
+                          //     Icons.edit,
+                          //     color: AppColors.c_3669C9,
+                          //   ),
+                          // ),
                         );
                       },
                     ),

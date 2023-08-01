@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:techno_city/app/app.dart';
 import 'package:techno_city/data/firebase/auth_service.dart';
 import 'package:techno_city/data/firebase/category_service.dart';
+import 'package:techno_city/data/firebase/product_service.dart';
 import 'package:techno_city/providers/auth_provider.dart';
 import 'package:techno_city/providers/category_provider.dart';
+import 'package:techno_city/providers/products_provider.dart';
 import 'package:techno_city/providers/profile_provider.dart';
 import 'package:techno_city/providers/tab_box_client_provider.dart';
 import 'package:techno_city/providers/tab_box_provider.dart';
@@ -29,19 +31,26 @@ Future<void> main() async {
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (context) => ProfileProvider(profileService: ProfileService()),
+          create: (context) =>
+              ProfileProvider(profileService: ProfileService()),
           lazy: true,
         ),
         ChangeNotifierProvider(
-          create: (context) => CategoryProvider(categoryService: CategoryService()),
+          create: (context) =>
+              CategoryProvider(categoryService: CategoryService()),
           lazy: true,
         ),
         ChangeNotifierProvider(
           create: (context) => TabBoxClientProvider(),
           lazy: true,
         ),
+        ChangeNotifierProvider(
+          create: (context) =>
+              ProductsProvider(productsService: ProductsService()),
+          lazy: true,
+        ),
       ],
-      child:const MyApp(),
+      child: const MyApp(),
     ),
   );
 }

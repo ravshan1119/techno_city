@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +32,7 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                       (index) {
                         CategoryModel categoryModel = snapshot.data![index];
                         return ListTile(
+                          leading: Image.file(File(categoryModel.imageUrl)),
                           onLongPress: () {
                             context.read<CategoryProvider>().deleteCategory(
                                 context: context,

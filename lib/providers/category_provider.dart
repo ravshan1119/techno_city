@@ -59,6 +59,8 @@ class CategoryProvider with ChangeNotifier {
     required BuildContext context,
     required CategoryModel categoryModel,
   }) async {
+    addNameController.text=categoryModel.categoryName;
+    addDescriptionController.text=categoryModel.description;
     showLoading(context: context);
     UniversalData universalData =
         await categoryService.updateCategory(categoryModel: categoryModel);

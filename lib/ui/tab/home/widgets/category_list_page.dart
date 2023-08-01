@@ -39,19 +39,25 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                           subtitle: Text(categoryModel.description),
                           trailing: IconButton(
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>UpdateCategoryPage(categoryId: categoryModel.categoryId,imageUrl: categoryModel.imageUrl,)));
-                              // context.read<CategoryProvider>().updateCategory(
-                              //   context: context,
-                              //   categoryModel: CategoryModel(
-                              //     categoryId: categoryModel.categoryId,
-                              //     categoryName: "Planshetlar zo'ridan",
-                              //     description: "Zo'r telefonlar zo'ridan",
-                              //     imageUrl: "imageUrl",
-                              //     createdAt: DateTime.now().toString(),
-                              //   ),
-                              // );
-
-
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    context
+                                        .read<CategoryProvider>()
+                                        .addDescriptionController
+                                        .text = categoryModel.description;
+                                    context
+                                        .read<CategoryProvider>()
+                                        .addNameController
+                                        .text = categoryModel.categoryName;
+                                    return UpdateCategoryPage(
+                                      categoryId: categoryModel.categoryId,
+                                      imageUrl: categoryModel.imageUrl,
+                                    );
+                                  },
+                                ),
+                              );
                             },
                             icon: Icon(
                               Icons.edit,

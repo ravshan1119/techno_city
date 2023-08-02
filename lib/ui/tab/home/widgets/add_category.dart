@@ -98,21 +98,18 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
                     borderRadius: BorderRadius.circular(10.r),
                     color: AppColors.c_FDA429),
                 child: Center(
-                    child: imagePath == defaultImageConstant
-                        ? Text(
-                      imagePath,
-                      style:  TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.white,
-                        fontSize: 18.sp,
-                        fontFamily: "LeagueSpartan",
-                      ),
+                    child: context
+                        .watch<CategoryProvider>()
+                        .categoryUrl
+                        .isEmpty
+                        ? const Text(
+                      "Image Not Selected",
+                      style: TextStyle(color: Colors.black),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
-                        : Image.file(
-                      File(imagePath),
-                    ),),
+                        : Image.network(
+                        context.watch<CategoryProvider>().categoryUrl),),
               ),
             ),
             SizedBox(height: 20.h),
@@ -198,10 +195,12 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
       maxHeight: 512,
       maxWidth: 512,
     );
+
     if (xFile != null) {
-      setState(() {
-        imagePath = xFile.path;
-      });
+      print("VBNKM<");
+      await Provider.of<CategoryProvider>(context,listen: false)
+          .uploadCategoryImage(context, xFile);
+
     }
   }
 
@@ -212,9 +211,8 @@ class _AddCategoryPageState extends State<AddCategoryPage> {
       maxWidth: 512,
     );
     if (xFile != null) {
-      setState(() {
-        imagePath = xFile.path;
-      });
+      await Provider.of<CategoryProvider>(context,listen: false)
+          .uploadCategoryImage(context, xFile);
     }
   }
 }

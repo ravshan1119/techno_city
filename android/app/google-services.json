@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "655845592841",
-    "project_id": "technocity-74d04",
-    "storage_bucket": "technocity-74d04.appspot.com"
+    "project_number": "964678062102",
+    "project_id": "technocity-85009",
+    "storage_bucket": "technocity-85009.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:655845592841:android:1f6cb14b18f00f40284dd8",
+        "mobilesdk_app_id": "1:964678062102:android:31e06397eac84143f46537",
         "android_client_info": {
-          "package_name": "uz.techno.city"
+          "package_name": "uz.technocity.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "655845592841-ir9npjrrakafj3ipr52662kksd55dpnp.apps.googleusercontent.com",
+          "client_id": "964678062102-8i2cbsqsmcm7pjre0hrtfvlvd1vsnh5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.technocity.app",
+            "certificate_hash": "c310c6dc89f60ee286477e7a8a8ae6ae3c351165"
+          }
+        },
+        {
+          "client_id": "964678062102-r0qa1koht1k573f00ui06jnai5j0feqk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDPTdf_UBW5gjW4Rm3xCv7EE86zF9M_cbU"
+          "current_key": "AIzaSyDF8x_GD_QE3YrrE0ClWbPYTzAQVcpTBuI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "655845592841-ir9npjrrakafj3ipr52662kksd55dpnp.apps.googleusercontent.com",
+              "client_id": "964678062102-ggsvrigk22m9096b10vobfuhov2peesb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

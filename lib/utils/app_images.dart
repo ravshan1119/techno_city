@@ -1,4 +1,4 @@
-class AppImages{
+class AppImages {
   static String account = "assets/svg/account.svg";
   static String profileImg = "assets/images/profile_image.svg";
   static String arrow = "assets/svg/arrow.svg";
@@ -33,8 +33,13 @@ class AppImages{
   static String wishlistColorful = "assets/svg/wishlist_colorful.svg";
   static String x = "assets/svg/x.svg";
   static String google = "assets/svg/google.svg";
-
+  static String shopping = "assets/svg/shopping.svg";
+  static String more = "assets/svg/more.svg";
 
   static String checkLoader = "assets/svg/check_loader.json";
   static String emptyState = "assets/svg/empty_state.json";
+
+  // png
+  static String naushnik = "assets/images/naushnik.png";
+  static String airmax = "assets/images/airmax.png";
 }

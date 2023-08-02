@@ -48,7 +48,7 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
-              color: Colors.white,
+              color: Colors.black,
             ),
             onPressed: () {
               Provider.of<CategoryProvider>(context, listen: false)
@@ -72,18 +72,15 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                           .read<ProductsProvider>()
                           .productNameController),
                   const SizedBox(height: 24),
-                  SizedBox(
-                    height: 200,
-                    child: GlobalTextField(
-                        maxLine: 100,
-                        hintText: "Description",
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.next,
-                        textAlign: TextAlign.start,
-                        controller: context
-                            .read<ProductsProvider>()
-                            .productDescController),
-                  ),
+                  GlobalTextField(
+                      maxLine: 100,
+                      hintText: "Description",
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      textAlign: TextAlign.start,
+                      controller: context
+                          .read<ProductsProvider>()
+                          .productDescController),
                   const SizedBox(height: 24),
                   GlobalTextField(
                     hintText: "Product Count",

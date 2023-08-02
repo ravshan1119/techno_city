@@ -5,11 +5,16 @@ import 'package:techno_city/utils/app_colors.dart';
 import 'package:techno_city/utils/app_images.dart';
 
 class ProductContainer extends StatelessWidget {
-  const ProductContainer({super.key});
+  const ProductContainer({super.key, required this.title, required this.currency, required this.price});
+
+  final String title;
+  final String currency;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
       height: 242.h,
       width: 156.w,
       decoration: BoxDecoration(
@@ -33,7 +38,7 @@ class ProductContainer extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Text(
-              "TMA-2 HD Wireless",
+              title,
               style: TextStyle(
                 fontFamily: "DMSans",
                 fontWeight: FontWeight.w500,
@@ -46,7 +51,7 @@ class ProductContainer extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Text(
-              "Rp. 1.500.000",
+              "${currency} ${price}",
               style: TextStyle(
                 fontFamily: "DMSans",
                 fontWeight: FontWeight.w700,

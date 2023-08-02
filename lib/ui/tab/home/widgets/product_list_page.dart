@@ -22,64 +22,64 @@ class _ProductsListPageState extends State<ProductsListPage> {
       body: Column(
         children: [
           StreamBuilder<List<CategoryModel>>(
-            stream: context.read<CategoryProvider>().getCategories(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return SizedBox(
-                  height: 60.h,
-                  child: Expanded(
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        ZoomTapAnimation(
-                          onTap:(){
-                            categoryId="";
-                            setState(() {
-
-                            });
-                          },
-                          child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 4.w,vertical: 9.h),
-                            padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
-                            height: 50.h,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16.r),
-                                color: Colors.amber),
-                            child: const Center(child: Text("All")),
-                          ),
-                        ),
-                        ...List.generate(
-                          snapshot.data!.length,
-                          (index) => ZoomTapAnimation(
-                            onTap: (){
-                              categoryId=snapshot.data![index].categoryId;
+              stream: context.read<CategoryProvider>().getCategories(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return SizedBox(
+                    height: 60.h,
+                    child: Expanded(
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          ZoomTapAnimation(
+                            onTap:(){
+                              categoryId="";
                               setState(() {
 
                               });
                             },
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 4.w,vertical: 9.h),
+                              margin: EdgeInsets.symmetric(horizontal: 6.w,vertical: 9.h),
                               padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
                               height: 50.h,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16.r),
-                                  color: Colors.amber),
-                              child: Center(child: Text(snapshot.data![index].categoryName)),
+                                  color:categoryId==""?Colors.tealAccent:Colors.amber),
+                              child: const Center(child: Text("All")),
                             ),
                           ),
-                        )
-                      ],
+                          ...List.generate(
+                            snapshot.data!.length,
+                                (index) => ZoomTapAnimation(
+                              onTap: (){
+                                categoryId=snapshot.data![index].categoryId;
+                                setState(() {
+
+                                });
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(horizontal: 6.w,vertical: 9.h),
+                                padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                                height: 50.h,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16.r),
+                                    color:categoryId==snapshot.data![index].categoryId?Colors.tealAccent: Colors.amber),
+                                child: Center(child: Text(snapshot.data![index].categoryName)),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                );
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text(snapshot.error.toString()),
+                  );
+                }
+                return const Center(child: CircularProgressIndicator());
               }
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text(snapshot.error.toString()),
-                );
-              }
-              return const Center(child: CircularProgressIndicator());
-            }
           ),
           StreamBuilder<List<ProductModel>>(
             stream: context.read<ProductsProvider>().getProducts(categoryId),

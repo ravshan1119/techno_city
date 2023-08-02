@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -41,18 +40,17 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: SystemUiOverlayStyle(),
-          title: Text("Product Add",style: TextStyle(
-            color: Colors.black
-          ),),
+          systemOverlayStyle: const SystemUiOverlayStyle(),
+          title: const Text(
+            "Product Add",
+            style: TextStyle(color: Colors.black),
+          ),
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             ),
             onPressed: () {
-              Provider.of<CategoryProvider>(context, listen: false)
-                  .clearTexts();
               Navigator.pop(context);
             },
           ),
@@ -88,7 +86,7 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller:
-                    context.read<ProductsProvider>().productCountController,
+                        context.read<ProductsProvider>().productCountController,
                   ),
                   const SizedBox(height: 24),
                   GlobalTextField(
@@ -97,7 +95,7 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                     textInputAction: TextInputAction.next,
                     textAlign: TextAlign.start,
                     controller:
-                    context.read<ProductsProvider>().productPriceController,
+                        context.read<ProductsProvider>().productPriceController,
                   ),
                   const SizedBox(height: 24),
                   DropdownButton(
@@ -130,50 +128,50 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                       if (snapshot.hasData) {
                         return snapshot.data!.isNotEmpty
                             ? SizedBox(
-                          height: 100,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: List.generate(
-                              snapshot.data!.length,
-                                  (index) {
-                                CategoryModel categoryModel =
-                                snapshot.data![index];
-                                return GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      selectedCategoryId =
-                                          categoryModel.categoryId;
-                                    });
-                                  },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(16),
-                                      color: selectedCategoryId ==
-                                          categoryModel.categoryId
-                                          ? Colors.green
-                                          : Colors.white,
-                                    ),
-                                    height: 100,
-                                    margin: const EdgeInsets.all(16),
-                                    padding: const EdgeInsets.all(16),
-                                    child: Center(
-                                      child: Text(
-                                        categoryModel.categoryName,
-                                        style: TextStyle(
-                                          color: selectedCategoryId ==
-                                              categoryModel.categoryId
-                                              ? Colors.white
-                                              : Colors.black,
+                                height: 100,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: List.generate(
+                                    snapshot.data!.length,
+                                    (index) {
+                                      CategoryModel categoryModel =
+                                          snapshot.data![index];
+                                      return GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            selectedCategoryId =
+                                                categoryModel.categoryId;
+                                          });
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(16),
+                                            color: selectedCategoryId ==
+                                                    categoryModel.categoryId
+                                                ? Colors.green
+                                                : Colors.white,
+                                          ),
+                                          height: 100,
+                                          margin: const EdgeInsets.all(16),
+                                          padding: const EdgeInsets.all(16),
+                                          child: Center(
+                                            child: Text(
+                                              categoryModel.categoryName,
+                                              style: TextStyle(
+                                                color: selectedCategoryId ==
+                                                        categoryModel.categoryId
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   ),
-                                );
-                              },
-                            ),
-                          ),
-                        )
+                                ),
+                              )
                             : const Center(child: Text("Empty!"));
                       }
                       if (snapshot.hasError) {
@@ -194,14 +192,18 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: Theme.of(context).indicatorColor),
-                      child: imagePath == defaultImageConstant
-                          ? Text(
-                        imagePath,
-                        style: const TextStyle(color: Colors.black),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      )
-                          : Image.file(File(imagePath)),
+                      child: context
+                              .watch<ProductsProvider>()
+                              .productUrl
+                              .isEmpty
+                          ? const Text(
+                              "Image Not Selected",
+                              style: TextStyle(color: Colors.black),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          : Image.network(
+                              context.watch<ProductsProvider>().productUrl),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -216,11 +218,11 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                   if (imagePath != defaultImageConstant &&
                       selectedCategoryId.isNotEmpty) {
                     context.read<ProductsProvider>().addProduct(
-                      context: context,
-                      imageUrls: [imagePath],
-                      categoryId: selectedCategoryId,
-                      productCurrency: selectedCurrency,
-                    );
+                          context: context,
+                          imageUrls: [imagePath],
+                          categoryId: selectedCategoryId,
+                          productCurrency: selectedCurrency,
+                        );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(

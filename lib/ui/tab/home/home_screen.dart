@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:techno_city/providers/category_provider.dart';
+import 'package:techno_city/providers/products_provider.dart';
 import 'package:techno_city/ui/tab/home/widgets/add_category.dart';
 import 'package:techno_city/ui/tab/home/widgets/add_product.dart';
 import 'package:techno_city/ui/tab/home/widgets/category_list_page.dart';
@@ -40,6 +41,7 @@ class _HomeScreenAdminState extends State<HomeScreenAdmin> {
         actions: [
           IconButton(
             onPressed: () {
+              context.read<ProductsProvider>().clearTexts();
               Navigator.push(
                 context,
                 MaterialPageRoute(

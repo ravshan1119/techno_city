@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:techno_city/data/firebase/product_service.dart';
 import 'package:techno_city/data/model/category/category_model.dart';
 import 'package:techno_city/data/model/product/product_model.dart';
 import 'package:techno_city/data/model/universal_data.dart';
 import 'package:techno_city/utils/ui_utils/loading_dialog.dart';
+
+import '../data/upload_service.dart';
 
 class ProductsProvider with ChangeNotifier {
   ProductsProvider({required this.productsService});
@@ -15,6 +18,7 @@ class ProductsProvider with ChangeNotifier {
   TextEditingController productPriceController = TextEditingController();
   TextEditingController productDescController = TextEditingController();
   TextEditingController productCountController = TextEditingController();
+  String productUrl="";
 
   Future<void> addProduct({
     required BuildContext context,
@@ -62,6 +66,25 @@ class ProductsProvider with ChangeNotifier {
       }
     } else {
       showMessage(context, "Maydonlar to'liq emas!!!");
+    }
+  }
+
+  Future<void> uploadCategoryImage(
+      BuildContext context,
+      XFile xFile,
+      ) async {
+    showLoading(context: context);
+    UniversalData data = await FileUploader.imageUploader(xFile);
+    if (context.mounted) {
+      hideLoading(dialogContext: context);
+    }
+    if (data.error.isEmpty) {
+      productUrl = data.data as String;
+      notifyListeners();
+    } else {
+      if (context.mounted) {
+        showMessage(context, data.error);
+      }
     }
   }
 

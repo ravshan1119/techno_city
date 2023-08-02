@@ -32,7 +32,7 @@ class _CategoriesListPageState extends State<CategoriesListPage> {
                       (index) {
                         CategoryModel categoryModel = snapshot.data![index];
                         return ListTile(
-                          leading: Image.file(File(categoryModel.imageUrl)),
+                          // leading: Image.file(File(categoryModel.imageUrl)),
                           onLongPress: () {
                             context.read<CategoryProvider>().deleteCategory(
                                 context: context,
